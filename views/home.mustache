@@ -3,9 +3,23 @@
   <head></head>
   <h1>Grocery List</h1>
   <body>
+    <ul>
     {{#lists}}
+    <li>
     {{name}}
+    <p>Address: {{street}}
+    {{city}}
+    {{state}}</p>
+
+    <form action="/deleteStore" method="POST">
+      <input type="hidden" name="id" value="{{id}}"/>
+      <input type="submit" value="Delete"/>
+    </form>
+
+  </li>
     {{/lists}}
+
+  </ul>
 
   </body>
 </html>

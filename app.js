@@ -24,11 +24,26 @@ shoppinglist.save().then(function(newList){
 })
 
 
+app.post('/deleteStore', function(req,res){
+  let id = req.body.id
+  models.shoppinglist.destroy({
+    where:{
+      id:id
+    }
+  }).then(function(){
+    res.redirect('/home')
+  })
+})
+
+
+
+
 app.get('/home',function(req,res){
   models.shoppinglist.findAll().then(function(shoppinglists){
     res.render('home',{lists : shoppinglists})
   })
 })
+
 
 
 app.listen(3000,function(req,res){
